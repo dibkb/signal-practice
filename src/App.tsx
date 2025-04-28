@@ -5,6 +5,7 @@ const App: Component = () => {
   const increment = () => setCount((prev) => prev + 1);
   const decrement = () => setCount((prev) => prev - 1);
   const [isEven, setIsEven] = createSignal<boolean>(false);
+
   createEffect(() => {
     if (count() % 2 == 0) {
       setIsEven(true);
@@ -12,10 +13,11 @@ const App: Component = () => {
       setIsEven(false);
     }
   });
+  
   return (
     <div class={""}>
-      <button onClick={increment}>Increment</button>
-      <button onClick={decrement}>Decrement</button>
+      <button onClick={[increment, 4]}>Increment</button>
+      <button on:click={decrement}>Decrement</button>
       <p>{count()}</p>
       <p>{isEven() ? "Even" : "Odd"}</p>
     </div>
